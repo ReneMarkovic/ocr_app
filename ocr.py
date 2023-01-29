@@ -2,14 +2,20 @@ import streamlit as st
 from PIL import Image
 import pytesseract
 import re
+import pdf2image
 
 pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
-
+pytesseract.pytesseract.tesseract_cmd = r'C://Program Files//Tesseract-OCR//tesseract.exe'
 # Step 1: Allow the user to select an image file
 image_file = st.file_uploader("Naložite sliko", type=["jpg", "png", "jpeg","pdf"])
-
-
-
+ext=print(image_file.name.split(".")[1])
+if ext=="pdf":
+    images = pdf2image.convert_from_bytes(image_file.read())
+    pc=0
+    for page in images:
+        st.image(page, use_column_width=True)
+        page.save(f'data//image_{pc+1}.jpg', 'PNG')
+        pc+=1
 if image_file is not None:
     # Step 2: Open the image file and convert it to a format Pytesseract can read
     image = Image.open(image_file)
