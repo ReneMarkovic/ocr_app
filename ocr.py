@@ -7,11 +7,12 @@ import pdf2image
 pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
 pytesseract.pytesseract.tesseract_cmd = r'C://Program Files//Tesseract-OCR//tesseract.exe'
 # Step 1: Allow the user to select an image file
+st.markdown("Pretvori v sliko")
 image_file = st.file_uploader("Naložite sliko", type=["jpg", "png", "jpeg","pdf"])
-button = st.button("Potrdi")
+button = st.button("Prični transformacijo v txt")
 
-if button is not None:
-    if image_file.tyoe=="application/pdf":
+if image_file is not None:
+    if image_file.type=="application/pdf":
         images = pdf2image.convert_from_bytes(image_file.read())
         pc=0
         text=''
