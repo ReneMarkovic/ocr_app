@@ -9,7 +9,7 @@ import pdf2image
 
 
 pytesseract.pytesseract.tesseract_cmd = r'/usr/bin/tesseract'
-pytesseract.pytesseract.tesseract_cmd = r'C://Program Files//Tesseract-OCR//tesseract.exe'
+#pytesseract.pytesseract.tesseract_cmd = r'C://Program Files//Tesseract-OCR//tesseract.exe'
 # Step 1: Allow the user to select an image file
 
 def extract_text(image_file):
