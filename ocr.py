@@ -15,8 +15,8 @@ if image_file is not None:
     image = Image.open(image_file)
     # Step 3: Perform OCR on the image and extract the text
     text = pytesseract.image_to_string(image)
-    text_proc=re.sub(r"\s+",r"\s",text)
-    text_proc=re.sub(r"[*]",r"\s",text)
+    text_proc=re.sub(r"\s\s+",r" ",text)
+    text_proc=re.sub(r"[*]",r" ",text)
     text_proc=re.sub(r"\n\n",r"\n",text)
     
     # Step 4: Display the extracted text on the webpage
